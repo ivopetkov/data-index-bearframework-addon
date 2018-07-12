@@ -10,7 +10,7 @@
 /**
  * @runTestsInSeparateProcesses
  */
-class DataIndexTest extends BearFrameworkAddonTestCase
+class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
 {
 
     /**
