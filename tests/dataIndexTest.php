@@ -28,11 +28,11 @@ class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
             $app->dataIndex->set('index1', $itemID, $data);
         }
 
-        $this->assertTrue($app->dataIndex->getList('index1')->length === 150);
+        $this->assertTrue($app->dataIndex->getList('index1')->count() === 150);
 
         $list = $app->dataIndex->getList('index1')
                 ->filterBy('value', '129', 'startWith');
-        $this->assertTrue($list->length === 1);
+        $this->assertTrue($list->count() === 1);
         $this->assertTrue($list[0]->__key === 'item129');
     }
 
