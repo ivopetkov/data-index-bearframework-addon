@@ -16,6 +16,6 @@ $context->classes
         ->add('IvoPetkov\BearFrameworkAddons\DataIndex', 'classes/DataIndex.php');
 
 $app->shortcuts
-        ->add('dataIndex', function() {
-            return new IvoPetkov\BearFrameworkAddons\DataIndex();
+        ->add('dataIndex', function () {
+                return new IvoPetkov\BearFrameworkAddons\DataIndex();
         });

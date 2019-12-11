@@ -13,8 +13,5 @@ namespace BearFramework {
      * @property-read \IvoPetkov\BearFrameworkAddons\DataIndex $dataIndex
      */
     class App
-    {
-        
-    }
-
+    { }
 }
