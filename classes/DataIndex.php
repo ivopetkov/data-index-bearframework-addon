@@ -92,7 +92,7 @@ class DataIndex
      */
     public function getList(string $indexID): \IvoPetkov\DataList
     {
-        return new \IvoPetkov\DataList(function(\IvoPetkov\DataListContext $context) use ($indexID) {
+        return new \IvoPetkov\DataList(function (\IvoPetkov\DataListContext $context) use ($indexID) {
             $result = [];
             $indexData = $this->getIndexData($indexID);
             asort($indexData);
@@ -270,5 +270,4 @@ class DataIndex
         $app = App::get();
         $app->locks->release('data-index-' . $indexID);
     }
-
 }
