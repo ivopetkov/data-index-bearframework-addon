@@ -1,7 +1,13 @@
 {
     "name": "ivopetkov/data-index-bearframework-addon",
     "description": "Data Index addon for Bear Framework",
-    "keywords": ["data", "index", "data index", "addon", "Bear Framework"],
+    "keywords": [
+        "data",
+        "index",
+        "data index",
+        "addon",
+        "Bear Framework"
+    ],
     "homepage": "https://github.com/ivopetkov/data-index-bearframework-addon",
     "license": "MIT",
     "authors": [
@@ -14,7 +20,7 @@
     "require": {
         "php": ">=7.1",
         "bearframework/bearframework": "1.*",
-        "ivopetkov/data-object": "0.7.*",
+        "ivopetkov/data-object": "0.7.*|0.8.*",
         "ivopetkov/locks-bearframework-addon": "0.1.*"
     },
     "require-dev": {
@@ -22,6 +28,8 @@
         "phpunit/phpunit": "7.*"
     },
     "autoload": {
-        "files": ["autoload.php"]
+        "files": [
+            "autoload.php"
+        ]
     }
 }
