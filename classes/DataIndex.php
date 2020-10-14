@@ -60,7 +60,7 @@ class DataIndex
         foreach ($items as $item) {
             $key = $item['key'];
             $data = $item['data'];
-            $chunkIndex = isset($indexData['keys'][$key]) ? $indexData['keys'][$key][1] : null;
+            $chunkIndex = isset($indexData['keys'][$key]) ? $indexData['keys'][$key] : null;
             if ($chunkIndex === null) {
                 for ($i = 0; $i < 10000; $i++) {
                     if (!isset($chunksData[$i])) {
