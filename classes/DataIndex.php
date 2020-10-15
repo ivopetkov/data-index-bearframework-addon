@@ -72,6 +72,9 @@ class DataIndex
                     }
                 }
             }
+            if (!isset($chunksData[$chunkIndex])) {
+                $chunksData[$chunkIndex] = $this->getChunkData($indexID, $chunkIndex);
+            }
             $chunksData[$chunkIndex][$key] = $data;
             $indexData['keys'][$key] = $chunkIndex;
             $changedChunks[$chunkIndex] = true;
