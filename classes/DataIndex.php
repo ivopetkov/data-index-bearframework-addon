@@ -62,7 +62,8 @@ class DataIndex
             $data = $item['data'];
             $chunkIndex = isset($indexData['keys'][$key]) ? $indexData['keys'][$key] : null;
             if ($chunkIndex === null) {
-                for ($i = 0; $i < 10000; $i++) {
+                $startIndex = empty($indexData['keys']) ? 0 : max($indexData['keys']);
+                for ($i = $startIndex; $i < $startIndex + 10000; $i++) {
                     if (!isset($chunksData[$i])) {
                         $chunksData[$i] = $this->getChunkData($indexID, $i);
                     }
