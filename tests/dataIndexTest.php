@@ -31,7 +31,7 @@ class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
         $this->assertTrue($app->dataIndex->getList('index1')->count() === 150);
 
         $list = $app->dataIndex->getList('index1')
-                ->filterBy('value', '129', 'startWith');
+            ->filterBy('value', '129', 'startWith');
         $this->assertTrue($list->count() === 1);
         $this->assertTrue($list[0]->__key === 'item129');
     }
@@ -101,5 +101,4 @@ class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
         $item = $app->dataIndex->get('index1', 'item4');
         $this->assertTrue($item === null);
     }
-
 }
