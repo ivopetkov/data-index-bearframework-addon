@@ -99,7 +99,7 @@ class DataIndex
         return new \IvoPetkov\DataList(function (\IvoPetkov\DataListContext $context) use ($indexID) {
             $filterCallbacks = [];
             foreach ($context->actions as $action) {
-                if ($action->name === 'filter') {
+                if ($action instanceof \IvoPetkov\DataListFilterAction) {
                     $filterCallbacks[] = $action->callback;
                 }
             }
