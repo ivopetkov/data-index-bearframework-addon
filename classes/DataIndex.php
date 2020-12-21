@@ -97,6 +97,13 @@ class DataIndex
     public function getList(string $indexID): \IvoPetkov\DataList
     {
         return new \IvoPetkov\DataList(function (\IvoPetkov\DataListContext $context) use ($indexID) {
+            $filterCallbacks = [];
+            foreach ($context->actions as $action) {
+                if ($action->name === 'filter') {
+                    $filterCallbacks[] = $action->callback;
+                }
+            }
+
             $result = [];
             $indexData = $this->getIndexData($indexID);
             asort($indexData);
@@ -108,7 +115,17 @@ class DataIndex
                         $chunkData = $this->getChunkData($indexID, $chunkIndex);
                         $previousChunkIndex = $chunkIndex;
                     }
-                    $result[] = array_merge((isset($chunkData[$key]) ? $chunkData[$key] : []), ['__key' => $key]);
+                    $add = true;
+                    $object = new \IvoPetkov\DataObject(array_merge((isset($chunkData[$key]) ? $chunkData[$key] : []), ['__key' => $key]));
+                    foreach ($filterCallbacks as $filterCallback) {
+                        if (call_user_func($filterCallback, $object) !== true) {
+                            $add = false;
+                            break;
+                        }
+                    }
+                    if ($add) {
+                        $result[] = $object;
+                    }
                 }
             }
             return $result;
