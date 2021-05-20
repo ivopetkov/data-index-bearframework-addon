@@ -98,9 +98,15 @@ class DataIndex
     {
         return new \IvoPetkov\DataList(function (\IvoPetkov\DataListContext $context) use ($indexID) {
             $filterCallbacks = [];
+            $sliceLimit = null;
             foreach ($context->actions as $action) {
                 if ($action instanceof \IvoPetkov\DataListFilterAction) {
                     $filterCallbacks[] = $action->callback;
+                } elseif ($action instanceof \IvoPetkov\DataListSliceAction) {
+                    $limit = $action->limit + $action->offset;
+                    if ($sliceLimit === null || $sliceLimit < $limit) {
+                        $sliceLimit = $limit;
+                    }
                 }
             }
 
@@ -125,6 +131,9 @@ class DataIndex
                     }
                     if ($add) {
                         $result[] = $object;
+                        if ($sliceLimit !== null && sizeof($result) === $sliceLimit) {
+                            break;
+                        }
                     }
                 }
             }
