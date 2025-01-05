@@ -131,7 +131,7 @@ class DataIndex
                     }
                     if ($add) {
                         $result[] = $object;
-                        if ($sliceLimit !== null && sizeof($result) === $sliceLimit) {
+                        if ($sliceLimit !== null && count($result) === $sliceLimit) {
                             break;
                         }
                     }

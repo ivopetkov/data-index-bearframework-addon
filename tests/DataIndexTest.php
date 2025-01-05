@@ -48,12 +48,12 @@ class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
         $app->dataIndex->set('index2', 'item3', ['value' => 3]);
 
         $keys = $app->dataIndex->getKeys('index1');
-        $this->assertTrue(sizeof($keys) === 2);
+        $this->assertTrue(count($keys) === 2);
         $this->assertTrue($keys[0] === 'item1');
         $this->assertTrue($keys[1] === 'item2');
 
         $keys = $app->dataIndex->getKeys('index2');
-        $this->assertTrue(sizeof($keys) === 1);
+        $this->assertTrue(count($keys) === 1);
         $this->assertTrue($keys[0] === 'item3');
     }
 
@@ -69,7 +69,7 @@ class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
         $app->dataIndex->set('index1', 'item3', ['value' => 3]);
 
         $keys = $app->dataIndex->getKeys('index1');
-        $this->assertTrue(sizeof($keys) === 3);
+        $this->assertTrue(count($keys) === 3);
         $this->assertTrue($keys[0] === 'item1');
         $this->assertTrue($keys[1] === 'item2');
         $this->assertTrue($keys[2] === 'item3');
@@ -77,7 +77,7 @@ class DataIndexTest extends BearFramework\AddonTests\PHPUnitTestCase
         $app->dataIndex->delete('index1', 'item2');
 
         $keys = $app->dataIndex->getKeys('index1');
-        $this->assertTrue(sizeof($keys) === 2);
+        $this->assertTrue(count($keys) === 2);
         $this->assertTrue($keys[0] === 'item1');
         $this->assertTrue($keys[1] === 'item3');
     }
